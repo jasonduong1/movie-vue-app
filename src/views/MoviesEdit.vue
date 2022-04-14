@@ -24,6 +24,12 @@ export default {
         })
         .catch((error) => console.log(error.reponse));
     },
+    destroyMovie: function (movie) {
+      axios.delete("movies/" + movie.id).then((response) => {
+        console.log("movie removed", response);
+        this.$router.push("/movies");
+      });
+    },
   },
 };
 </script>
@@ -47,6 +53,6 @@ export default {
       <input type="submit" value="Update" />
     </div>
   </form>
-  <br />
+  <button v-on:click="destroyMovie(movie)">Delete movie</button>
   <p><a href="/movies">Back to Movies</a></p>
 </template>
