@@ -18,4 +18,8 @@ export default {
 <template>
   <h1>Movie Show</h1>
   {{ movie }}
+  <br />
+  <a :href="`/movies/${movie.id}/edit`">Edit</a>
+  <br />
+  <a href="/movies">Back to Movies</a>
 </template>
