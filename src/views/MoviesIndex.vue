@@ -17,6 +17,7 @@ export default {
 
 <template>
   <div v-for="movie in movies" :key="movie">
-    <p>{{ movie }}</p>
+    <p>{{ movie.title }}</p>
+    <a v-bind:href="`/movies/${movie.id}`" class="btn btn-primry">More Info</a>
   </div>
 </template>
