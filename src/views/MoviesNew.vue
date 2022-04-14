@@ -4,6 +4,7 @@ export default {
   data: function () {
     return {
       newMovieParams: {},
+      error: [],
     };
   },
   methods: {
@@ -14,7 +15,7 @@ export default {
           this.movies.push(response.data);
           console.log("Movie created", response.data);
         })
-        .catch((error) => console.log.log(error.response));
+        .catch((error) => console.log(error.response));
     },
   },
 };
