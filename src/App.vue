@@ -8,7 +8,9 @@
     |
     <router-link to="/actors">Actors</router-link>
     |
-    <router-link to="/movies/new">Add a movie</router-link>
+    <router-link to="/movies/new">Add movie</router-link>
+    |
+    <router-link to="/actors/new">Add actor</router-link>
     |
     <router-link to="/signup">Signup</router-link>
     |
