@@ -4,6 +4,7 @@ export default {
   data: function () {
     return {
       movies: [],
+      titleFilter: "",
     };
   },
   created: function () {
@@ -12,11 +13,41 @@ export default {
       this.movies = response.data;
     });
   },
+  methods: {
+    filterMovies: function () {
+      return this.movies.filter((movie) => {
+        var lowerTitle = movie.title.toLowerCase();
+        var lowerTitleFilter = this.titleFilter.toLowerCase();
+        return lowerTitle.includes(lowerTitleFilter);
+      });
+    },
+    sortedArray() {
+      let sortedMovies = this.movies;
+      sortedMovies = sortedMovies.sort((a, b) => {
+        let fa = a.title.toLowerCase(),
+          fb = b.title.toLowerCase();
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+      return sortedMovies;
+    },
+  },
 };
 </script>
 
 <template>
-  <div v-for="movie in movies" :key="movie">
+  <h1>Movies</h1>
+  <input v-model="titleFilter" type="text" list="title" />
+  <datalist id="title">
+    <option v-for="movie in movies" :key="movie.id">{{ movie.title }}</option>
+  </datalist>
+  <button v-on:click="sortedArray()">Sort by title</button>
+  <div v-for="movie in filterMovies()" :key="movie">
     <p>{{ movie.title }}</p>
     <a v-bind:href="`/movies/${movie.id}`" class="btn btn-primry">More Info</a>
   </div>
